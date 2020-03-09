@@ -1,38 +1,60 @@
-Tony 8934273745 AudiA6 Silver 10,00,000 20000
-Anthony 6886433168 Swift Red 7,00,000 50000
-Manderine 8438404199 Evoque White 30,00,000 5,00,000
-Justin 6432942443 Mercedes-S-Class White 
-Mark 9716260694 Evoque Red 
-Abhish 8822107568 Alto800 Black
-Mansi 8986563191 AudiA6 Brown 
-Umesh 8067729930 WagonR Yellow
-Moghe 7599748655 Swift White
-Indra 7805923363 WagonR Brown
-Pooja 7805923363 Baleno Blue
-Soni 6429605915 Ciaz Silver
-Ninad 7709928711 Mercedes-AMG DarkGrey
-Sarah 9876543210 Mercedes-S-Class White
-Namita 9881755880 Evoque White
-Akhil 8237392931 Audi-Q7 Red
-Sudeva 9839031551 Dzire Silver
-Saumya 8179835086 Balleno White
-Duffy 7936784268 Breza Red
-Darcy 2212990726 Cellero White
-Morris 3633847343 Evoque White
-Christopher 6288892594 AudiA6 Silver
-Matthew 9596986790 AudiA6 Black
-Peter 8357773067 Mercedes-AMG White
-Spencer 6619463663 Swift Red
-Harry 4515511662 Alto Black
-Aria 9147346109 Dzire White
-Asha 8378770216 WagonR Blue
-Augusta 4864132700 AudiQ7 Silver
-Nicholas 2992096325 Celero White
-Noah 3024840371 Baleno Silver
-Nelson 6422574024 Alto Silver
-Nat 6765131391 Alto800 White
-Scott 3639705041 Swift Red
-Stephen 2879398078 Balleno Blue
-Sheetal 7914904902 Breza Blue
-Sebastian 6407048309 AudiA6 Red 
-Lewis 3929286966 Mercedes-AMG Silver
+Tony 8934273745 Audi-A6 Silver 914 Petrol Sedan 3 54lkh 1.5lkh 20lkh C003
+Anthony 6886433168 Swift Red 727 Petrol Hatchback 1 7.25lkh 7k 3lkh A004
+Manderine 8438404199 Evoque White 701 Petrol SUV 0 55lkh 1.1lkh 30lkh C002
+Justin 6432942443 Mercedes-S-Class White 240 Petrol Sedan 4 1.3crore 2.5lkh 50lkh C003
+Mark 9716260694 Evoque Red 234 Petrol SUV 2 55lkh 1.1lkh 10lkh C003
+Abhish 8822107568 Alto800 Black 607 Petrol Hatchback 1 4lkh 6k 3lkh B001
+Mansi 8986563191 Audi-A6 Brown 917 Petrol Sedan 5 54lkh 1.5lkh 22lkh C001
+Umesh 8067729930 WagonR Yellow 646 Petrol Hatchback 1 4.8lkh 8k 2.2lkh B002
+Moghe 7599748655 Swift White 651 Diesel Hatchback 0 7.25lkh 7k 4lkh A002
+Indra 7805923363 WagonR Brown 267 Petrol Hatchback 2 4.8lkh 8k 3lkh B003
+Pooja 7805923363 Baleno Blue 434 Petrol Hatchback 4 7lkh 10k 5lkh A004
+Soni 6429605915 Ciaz Silver 607 Petrol Sedan 2 11.1lkh 16k 6lkh A003
+Ninad 7709928711 Mercedes-AMG DarkGrey 347 Petrol Hatchback 1 2.2crore 4.5lkh 50lkh C002
+Sarah 9876543210 Mercedes-S-Class White 763 Petrol Sedan 1 1.3crore 2.5lkh 80lkh C003
+Namita 9881755880 Evoque White 321 Petrol SUV 3 55lkh 1.1lkh 30lkh C001
+Akhil 8237392931 Audi-Q7 Red 708 Petrol Sedan 2 72lkh 1.7lkh 60lkh C003
+Sudeva 9839031551 Dzire Silver 337 Diesel Sedan 0 9.5lkh 12k 5lkh C003
+Saumya 8179835086 Baleno White 432 Petrol Hatchback 3 7lkh 10k 2lkh B002
+Duffy 7936784268 Brezza Red 305 Diesel SUV 2 8.3lkh 18k 6lkh A005
+Darcy 2212990726 Cellero White 781 Petrol Hatchback 6 6.5lkh 9k 3.1lkh A005
+Morris 3633847343 Evoque White 830 Petrol SUV 2 55lkh 1.1lkh 10lkh C005
+Christopher 6288892594 Audi-A6 Silver 805 Petrol Sedan 1 54lkh 1.5lkh 30lkh C003
+Matthew 9596986790 Audi-A6 Black 254 Petrol Sedan 3 54lkh 1.5lkh 12lkh C001
+Peter 8357773067 Mercedes-AMG White 610 Petrol Hatchback 1 2.2crore 4.5lkh 60lkh C003
+Spencer 6619463663 Swift Red 772 Diesel Hatchback 5 7.25lkh 7k 2lkh A005
+Harry 4515511662 Alto Black 660 Petrol Hatchback 1 5lkh 10k 1lkh B005
+Aria 9147346109 Dzire White 203 Petrol Sedan 3 9.5lkh 12k 7lkh B004
+Asha 8378770216 WagonR Blue 401 Petrol Hatchback 2 4.8lkh 8k 2lkh B002
+Augusta 4864132700 Audi-Q7 Silver 559 Petrol SUV 1 72lkh 1.7lkh 20lkh C001
+Nicholas 2992096325 Cellero White 832 Petrol Hatchback 4 6.5lkh 9k 4.1lkh A003
+Noah 3024840371 Baleno Silver 602 Petrol Hatchback 3 7lkh 10k 2lkh B002
+Nelson 6422574024 Alto Silver 412 Petrol Hatchback 3 5lkh 10k 1lkh B004
+Nat 6765131391 Alto800 White 435 Petrol Hatchback 2 4lkh 6k 2.5lkh B003
+Scott 3639705041 Swift Red 562 Petrol Hatchback 2 7.25lkh 7k 2.3lkh A004 
+Stephen 2879398078 Baleno Blue 769 Petrol Hatchback 3 7lkh 10k 5lkh B001
+Sheetal 7914904902 Brezza Blue 318 Diesel SUV 1 8.3lkh 18k 3.2lkh A005
+Sebastian 6407048309 Audi-A6 Red 209 Petrol Sedan 1 54lkh 1.5lkh 22lkh C003
+Lewis 3929286966 Mercedes-AMG Silver 336 Petrol Hatchback 0 2.2crore 4.5lkh 50lkh C004
+Megan 9563355322 Ertiga Blue 614 Diesel SUV 3 13lkh 18k 5lkh B003
+Kathryn 3306267981 Ciaz Silver 646 Petrol Sedan 2 11.1lkh 16k 4lkh A001
+Ellen 902259951 Ertiga Silver 863 Petrol SUV 1 13lkh 18k 7lkh B005
+James 2868083309 Cellero White 218 Petrol Hatchback 5 6.5lkh 9k 3lkh A002
+Thomas 6823190182 Brezza Red 516 Petrol SUV 2 8.3lkh 18k 6lkh A004
+Alexander 8452423891 Dzire Blue 937 Petrol Sedan 3 9.5lkh 12k 6lkh B004
+Benjamin 4419428902 Audi-Q7 Silver 620 Petrol SUV 3 72lkh 1.7lkh 12lkh C003
+David 6653992204 Swift BLack 870 Petrol Hatchback 4 7.25lkh 7k 2.5lkh A003
+John 5598815612 Alto Black 405 Petrol Hatchback 6 5lkh 10k 1lkh B002
+Rachel 5538608720 Mercedes-AMG Black 513 Petrol Hatchback 4 2.2crore 4.5lkh 1crore C002
+Rose 7208929866 Evoque Black 224 Petrol SUV 1 55lkh 1.1lkh 22lkh C003
+Ethan 5944186427 Audi-Q7 White 928 Petrol SUV 1 72lkh 1.7lkh 30lkh C002
+Owen 9749629176 Mercedes-S-Class Silver 432 Petrol Sedan 4 1.3crore 2.5lkh 60lkh C001
+Harrison 7597288296 Audi-A6 Black 832 Petrol Sedan 1 54lkh 1.5lkh 12lkh C005
+Allison 3753155104 Mercedes-AMG Green 254 Petrol Hatchback 3 2.2crore 4.5lkh 80lkh C003
+Autumn 8619190248 Evoque Red 231 Petrol SUV 1 55lkh 1.1lkh 50lkh C001
+Maxwell 3323815131 Mercedes-S-Class Black 979 Petrol Sedan 3 1.3crore 2.5lkh 38lkh C002
+Mitchell 2049074773 Audi-Q7 Blue 347 Petrol SUV 2 72lkh 1.7lkh 40lkh C003
+Max 8839836923 Brezza Red 307 Diesel SUV 2 8.3lkh 18k 5lkh A004
+Robin 8146560146 Ertiga White 202 Petrol SUV 1 13lkh 18k 7lkh B001
+Diana 9687272421 Mercedes-AMG Grey 435 Petrol Hatchback 4 2.2crore 4.5lkh 1crore C002
+Angel 6113559232 Ertiga Blue 303 Petrol SUV 3 13lkh 18k 8lkh B005
