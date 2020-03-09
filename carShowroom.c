@@ -24,10 +24,12 @@ typedef struct stocknode
 // structure for car details of purchased cars
 typedef struct Carnode
 {
-    char customerName[10], carName[10], insuranceEval[10], salesAgent[10];
-    int ActualPrice, EMI, balancedAmount, servicingCount;
+    char carName[15],carColor[10],fuelType[10],carType[10 ],insuranceEval[10],salesAgent[10];
+    char customerName[10],customerMob[10],carRegNo[4];
+    char ActualPrice[10],EMI[10],balancedAmount[10],servicingCount[2];
     struct Carnode *Carnext;
 } purchasedCar;
+purchasedCar *carHead=NULL,*carTemp,*carNewNode;
 
 //structure for Sales Person
 typedef struct SPnode
@@ -200,4 +202,49 @@ int main()
     printSalesPerson();
     storeShowRoomDetails();
     printShowRoomDetails();
+    
+    FILE *fptr3;
+    fptr3=fopen("purchasedCar.txt","r");
+    while (count<soldCarsCount)
+    {
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->customerName,str);
+        printf("%s ",carNewNode->customerName);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->customerMob,str);
+        printf("%s ",carNewNode->customerMob);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->carName,str);
+        printf("%s ",carNewNode->carName);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->carColor,str);
+        printf("%s ",carNewNode->carColor);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->carRegNo,str);
+        printf("%s ",carNewNode->carRegNo);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->fuelType,str);
+        printf("%s ",carNewNode->fuelType);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->carType,str);
+        printf("%s ",carNewNode->carType);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->servicingCount,str);
+        printf("%s ",carNewNode->servicingCount);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->ActualPrice,str);
+        printf("%s ",carNewNode->ActualPrice);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->balancedAmount,str);
+        printf("%s ",carNewNode->balancedAmount);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->EMI,str);
+        printf("%s ",carNewNode->EMI);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->salesAgent,str);
+        printf("%s ",carNewNode->salesAgent);
+
+
+    }
+    fclose(fptr3);
 }
