@@ -380,4 +380,43 @@ int main()
         
     }
     printf("Total %f\n",total);
+    
+    //start of predict sales for a given car
+    float x,y;
+    found=0,total=0;
+    printf("Enter the car name to predict sales\n");
+    scanf("%s",&str);
+    for ( count = 0; count < 15 && found!=1; count++)
+    {
+        if (strcmp(str,bestSeller[count].carName)==0)
+        {
+            found=1;
+        }
+        
+    }
+    count--;
+    printf("%d %s\n",count,bestSeller[count].carName);
+    carTemp=carHead;
+    while (carTemp!=NULL)
+    {
+        SPtemp=SPhead;
+        if (strcmp(carTemp->carName,str)==0)
+        {
+            while (SPtemp!=NULL)
+            {
+                if (strcmp(carTemp->salesAgent,SPtemp->spId)==0)
+                {
+                    x=atof(SPtemp->salesTarget);
+                    y=atof(SPtemp->salesAchieved);
+                    total=total+(bestSeller[count].count*(y/x));
+                    printf("Total %f\n",total);
+                }
+                SPtemp=SPtemp->next;
+                
+            }
+            
+        }
+        carTemp=carTemp->Carnext;
+        
+    }
 }
