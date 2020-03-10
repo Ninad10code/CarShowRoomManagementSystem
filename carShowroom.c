@@ -24,8 +24,8 @@ typedef struct stocknode
 // structure for car details of purchased cars
 typedef struct Carnode
 {
-    char carName[15],carColor[10],fuelType[10],carType[10 ],insuranceEval[10],salesAgent[10];
-    char customerName[10],customerMob[10],carRegNo[4];
+    char carName[18],carColor[10],fuelType[10],carType[10 ],insuranceEval[10],salesAgent[10];
+    char customerName[10],customerMob[11],carRegNo[4];
     char ActualPrice[10],EMI[10],balancedAmount[10],servicingCount[2];
     struct Carnode *Carnext;
 } purchasedCar;
@@ -47,7 +47,7 @@ stockDetails *showRoomHead = NULL;
 void storeSalesPerson()
 {
     salesPerson *SPtemp, *newNode;
-    char str[15], dtr[10], *p;
+    char str[18], *p;
     int count = 0;
     FILE *fptr;
     fptr = fopen("salesPerson.txt", "r");
@@ -203,10 +203,13 @@ int main()
     storeShowRoomDetails();
     printShowRoomDetails();
     
+    int soldCarsCount=60;
+    count=0;
     FILE *fptr3;
     fptr3=fopen("purchasedCar.txt","r");
     while (count<soldCarsCount)
     {
+        carNewNode=(purchasedCar *)malloc(sizeof(purchasedCar));
         fscanf(fptr3,"%s",&str);
         strcpy(carNewNode->customerName,str);
         printf("%s ",carNewNode->customerName);
@@ -235,16 +238,28 @@ int main()
         strcpy(carNewNode->ActualPrice,str);
         printf("%s ",carNewNode->ActualPrice);
         fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->EMI,str);
+        fscanf(fptr3,"%s",&str);
         strcpy(carNewNode->balancedAmount,str);
         printf("%s ",carNewNode->balancedAmount);
-        fscanf(fptr3,"%s",&str);
-        strcpy(carNewNode->EMI,str);
         printf("%s ",carNewNode->EMI);
         fscanf(fptr3,"%s",&str);
         strcpy(carNewNode->salesAgent,str);
-        printf("%s ",carNewNode->salesAgent);
-
-
+        printf("%s\n",carNewNode->salesAgent);
+        carNewNode->Carnext=NULL;
+        if (carHead==NULL)
+        {
+            carHead=carNewNode;
+            carTemp=carNewNode;
+        }
+        else
+        {
+            carTemp->Carnext=carNewNode;
+            carTemp=carNewNode;
+        }
+        
+        
+        count++;
     }
     fclose(fptr3);
 }
