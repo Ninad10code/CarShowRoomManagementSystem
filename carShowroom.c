@@ -196,6 +196,32 @@ void printShowRoomDetails(){
     }
 }
 
+carModelData * MergeShowRoom()
+{
+    carModelData *mergedAvailCar, *carModelDataTemp;
+    stockDetails *showRoomTemp;
+    int count = 1;
+    int availCarNo = showRoomHead->availCarsInStock;
+    mergedAvailCar = showRoomHead->carModelDataHead;
+    carModelDataTemp = mergedAvailCar;
+    while(count < availCarNo){
+        carModelDataTemp = carModelDataTemp->childnext;
+        count++;
+    }
+    count = 1;
+    showRoomTemp = showRoomTemp->Stocknext;
+    availCarNo = showRoomTemp->availCarsInStock;
+    carModelDataTemp = showRoomTemp->carModelDataHead;
+    while (count < availCarNo)
+    {
+        carModelDataTemp = carModelDataTemp->childnext;
+        count++;
+    }
+    showRoomTemp = showRoomHead->Stocknext;
+    carModelDataTemp = showRoomTemp->carModelDataHead;
+    return mergedAvailCar;
+}
+
 int main()
 {
     char str[18],agentName[10],agentId[5],p[5];
