@@ -40,10 +40,17 @@ typedef struct SPnode
     struct SPnode *next;
 } salesPerson;
 
+//structure for bestselling car
+typedef struct bestSelling
+{
+    int count;
+    char carName[18];
+} popularCar;
+
 //Global variables
 salesPerson *SPhead = NULL;
 stockDetails *showRoomHead = NULL;
-
+popularCar *bestSeller;
 void storeSalesPerson()
 {
     salesPerson *SPtemp, *newNode;
