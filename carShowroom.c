@@ -3,7 +3,7 @@
 #include<string.h>
 typedef struct stockchild
 {
-    char carName[15];
+    char carName[18];
     char carColor[10] ;
     char fuelType[10];
     char carType[10] ;
@@ -26,7 +26,7 @@ typedef struct stocknode
 // structure for car details of purchased cars
 typedef struct Carnode
 {
-    char carName[15],carColor[10],fuelType[10],carType[10 ],insuranceEval[10],salesAgent[10];
+    char carName[18],carColor[10],fuelType[10],carType[10 ],insuranceEval[10],salesAgent[10];
     char customerName[10],customerMob[10],carRegNo[3];
     int ActualPrice,EMI,balancedAmount,servicingCount;
     struct Carnode *Carnext;
@@ -46,7 +46,7 @@ stockDetails *showRoomHead=NULL,*showRoomtemp,*stocckNewNode;
 purchasedCar *carHead=NULL,*carTemp,*carNewNode;
 int main()
 {
-    char str[15],dtr[10],*p;
+    char str[18],dtr[10],agentId[5],p[5];
     // str[10]=(char *)malloc(sizeof(char)*105);
     int count=0;
     FILE *fptr;
@@ -200,50 +200,147 @@ int main()
     fclose(fptr2);
     int soldCarsCount=60;
     count=0;
-    // FILE *fptr3;
-    // fptr3=fopen("purchasedCar.txt","r");
-    // while (count<soldCarsCount)
-    // {
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->customerName,str);
-    //     printf("%s ",carNewNode->customerName);
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->customerMob,str);
-    //     printf("%s ",carNewNode->customerMob);
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->carName,str);
-    //     printf("%s ",carNewNode->carName);
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->carColor,str);
-    //     printf("%s ",carNewNode->carColor);
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->carRegNo,str);
-    //     printf("%s ",carNewNode->carRegNo);
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->fuelType,str);
-    //     printf("%s ",carNewNode->fuelType);
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->carType,str);
-    //     printf("%s ",carNewNode->carType);
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->servicingCount,str);
-    //     printf("%s ",carNewNode->servicingCount);
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->ActualPrice,str);
-    //     printf("%s ",carNewNode->ActualPrice);
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->balancedAmount,str);
-    //     printf("%s ",carNewNode->balancedAmount);
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->EMI,str);
-    //     printf("%s ",carNewNode->EMI);
-    //     fscanf(fptr3,"%s",&str);
-    //     strcpy(carNewNode->salesAgent,str);
-    //     printf("%s ",carNewNode->salesAgent);
+    FILE *fptr3;
+    fptr3=fopen("purchasedCar.txt","r");
+    while (count<soldCarsCount)
+    {
+        carNewNode=(purchasedCar *)malloc(sizeof(purchasedCar));
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->customerName,str);
+        printf("%s ",carNewNode->customerName);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->customerMob,str);
+        printf("%s ",carNewNode->customerMob);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->carName,str);
+        printf("%s ",carNewNode->carName);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->carColor,str);
+        printf("%s ",carNewNode->carColor);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->carRegNo,str);
+        printf("%s ",carNewNode->carRegNo);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->fuelType,str);
+        printf("%s ",carNewNode->fuelType);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->carType,str);
+        printf("%s ",carNewNode->carType);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->servicingCount,str);
+        printf("%s ",carNewNode->servicingCount);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->ActualPrice,str);
+        printf("%s ",carNewNode->ActualPrice);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->EMI,str);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->balancedAmount,str);
+        printf("%s ",carNewNode->balancedAmount);
+        printf("%s ",carNewNode->EMI);
+        fscanf(fptr3,"%s",&str);
+        strcpy(carNewNode->salesAgent,str);
+        printf("%s\n",carNewNode->salesAgent);
+        carNewNode->Carnext=NULL;
+        if (carHead==NULL)
+        {
+            carHead=carNewNode;
+            carTemp=carNewNode;
+        }
+        else
+        {
+            carTemp->Carnext=carNewNode;
+            carTemp=carNewNode;
+        }
+        
+        
+        count++;
+    }
+    fclose(fptr3);
+    count=0;
+    bestSeller=(popularCar *)malloc(sizeof(popularCar)*16);
+    count=0;
+    FILE *fptr4;
+    fptr4=fopen("Carmodels.txt","r");
+    while (count<15)
+    {
+        fscanf(fptr4,"%s",&str);
+        carTemp=carHead;
+        strcpy(bestSeller[count].carName,str);
+        printf("%s\n",bestSeller[count].carName);
+        bestSeller[count].count=0;
+        while (carTemp!=NULL)
+        {
+            if (strcmp(carTemp->carName,str)==0)
+            {
+                bestSeller[count].count++;
+            }
+            carTemp=carTemp->Carnext;
 
-
-    // }
-    // fclose(fptr3);
+            
+            
+        }
+        printf("%d\n",bestSeller[count].count);
+        if (bestSeller[count].count>maxBestSaleCount)
+        {
+            maxBestSaleCount=bestSeller[count].count ;
+        }
+        
+        count++;
+        
+    }
+    printf("Max best sale %d\n",maxBestSaleCount);
+    fclose(fptr4);
+    count=0;
+    printf("Best seller car/cars are\n");
+    while (count<16)
+    {
+        if (bestSeller[count].count==maxBestSaleCount)
+        {
+            printf("%s ",bestSeller[count].carName);
+        }
+        count++;
+        
+    }
+    printf("\n");
+    int found=0;
+    float total=0.0,balance=0.0;
+    printf("Enter the sales agent name\n");
+    scanf("%s",&agentName);
+    printf("Agent name is %s\n",agentName);
+    SPtemp=SPhead;
+    while (SPtemp!=NULL && found!=1)
+    {
+        if (strcmp(SPtemp->spName,agentName)==0)
+        {
+            found=1;
+            strcpy(agentId,SPtemp->spId);
+        }
+        else
+        {
+            SPtemp=SPtemp->next;
+        }
+        
+    }
+    carTemp=carHead;
+    while (carTemp!=NULL)
+    {
+        if (strcmp(carTemp->salesAgent,agentId)==0)
+        {
+            i=0;
+            while (carTemp->balancedAmount[i]!='l')
+            {
+                p[i]=carTemp->balancedAmount[i];
+                i++;
+            }
+            balance=atoi(p);
+            printf("Balance %f\n",balance);
+            total=total+balance;
+        }
+        carTemp=carTemp->Carnext;
+        
+    }
+    printf("Total %f\n",total);
     
     
 }
