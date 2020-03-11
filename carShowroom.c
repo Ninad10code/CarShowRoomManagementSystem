@@ -234,14 +234,11 @@ carModelData * MergeShowRoom()
 void insert(purchasedCar **lptr, purchasedCar * node)
 {
     purchasedCar *current; 
-    printf("\nEntered insert function\n");
     char nodeSalesAgent[5], tempSalesAgent[5];
     strcpy(nodeSalesAgent, node->salesAgent);
-    printf("%s ", nodeSalesAgent);
-    if (lptr!=NULL)
+    if ((*lptr)!=NULL)
     {
         strcpy(tempSalesAgent, (*lptr)->salesAgent);
-        printf("%s ", tempSalesAgent);
     }
     else
     {
@@ -249,34 +246,28 @@ void insert(purchasedCar **lptr, purchasedCar * node)
     }
     
     /* Special case for the head end */
-    if (lptr == NULL || strcmp(tempSalesAgent, nodeSalesAgent) > 0) 
+    if ((*lptr) == NULL || strcmp(tempSalesAgent, nodeSalesAgent) > 0) 
     { 
-        printf("Entered second if");
         node->Carnext = *lptr; 
         *lptr = node; 
-        printf("%s", (*lptr)->salesAgent);
     } 
     else
     { 
         /* Locate the node before the point of insertion */
-        printf("Entered else");
         current = *lptr; 
-        int flag = 0;
+        int flag = 0; 
         while (current->Carnext!=NULL && flag==0) 
         {
             strcpy(tempSalesAgent, current->Carnext->salesAgent);
-            printf("%s ", tempSalesAgent);
             if(strcmp(tempSalesAgent, nodeSalesAgent) <= 0)
-            { 
+            {
                 current = current->Carnext;
             }
             else
             {
                 flag = 1;   
             }
-            current = current->Carnext;
-            
-        } 
+        }
         node->Carnext = current->Carnext; 
         current->Carnext = node; 
     }
@@ -293,13 +284,11 @@ void bestSalesPersonSort()
     purchasedCar * purchasedCarBucketArray[] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
     while (purchaseCount < soldCarsCount)
     {
-        printf("%s ", purchasedCarDataTemp->carName);
         strcpy(str, purchasedCarDataTemp->carName);
         purchasedCarDataNext = purchasedCarDataTemp->Carnext;
         purchasedCarDataTemp->Carnext = NULL;
         if(strcmp(str, "Swift") == 0)
         {
-            printf("Entered if");
             insert(&purchasedCarBucketArray[0], purchasedCarDataTemp);
         }
         else if (strcmp(str, "Ciaz") == 0)
@@ -362,15 +351,40 @@ void bestSalesPersonSort()
         purchaseCount++;
     }
     int count;
-    purchasedCarDataTemp = purchasedCarBucketArray[0];
+    char agentID[5], agentIDMax[5];
+    int salesCount, salesCountMax;
+    purchasedCarDataNext = NULL;
     for(count =0; count<15; count++)
     {
         purchasedCarDataTemp = purchasedCarBucketArray[count];
+        salesCount = 0;
+        salesCountMax = 0;
+        strcpy(agentID, purchasedCarDataTemp->salesAgent); 
+        strcpy(agentIDMax, purchasedCarDataTemp->salesAgent);
         while(purchasedCarDataTemp!=NULL){
+            if(strcmp(agentID, purchasedCarDataTemp->salesAgent) == 0)
+            {
+                salesCount++;
+            }
+            else
+            {
+                if(salesCount > salesCountMax)
+                {
+                    strcpy(agentIDMax, agentID);
+                    salesCountMax = salesCount;
+                }
+                salesCount = 1;
+                strcpy(agentID, purchasedCarDataTemp->salesAgent);
+            }
             printf("%s %s\n", purchasedCarDataTemp->carName, purchasedCarDataTemp->salesAgent);
             purchasedCarDataTemp = purchasedCarDataTemp->Carnext;
         }
-        purchasedCarDataTemp->Carnext = purchasedCarBucketArray[count + 1];
+        if(salesCount > salesCountMax)
+        {
+            strcpy(agentIDMax, agentID);
+            salesCountMax = salesCount;
+        }
+        printf("Car %s Agent %s\n", purchasedCarBucketArray[count]->carName, agentIDMax);
     }
 }
 
