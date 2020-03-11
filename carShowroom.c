@@ -229,6 +229,25 @@ carModelData * MergeShowRoom()
     return mergedAvailCar;
 }
 
+void bestSalesPersonSort()
+{
+    purchasedCar *purchasedCarDataTemp, *purchasedCarBucketArray[15];
+    int purchaseCount, soldCarsCount;
+    purchaseCount = 0;
+    soldCarsCount = 60;
+    char str[15];
+    purchasedCarDataTemp = carHead;
+    while (purchaseCount < soldCarsCount)
+    {
+        strcpy(str, purchasedCarDataTemp->carName);
+        if(strcmp(str, "Swift"))
+        {
+            insert(purchasedCarBucketArray[0], purchasedCarDataTemp);
+        }
+    }
+    
+}
+
 int main()
 {
     char str[18],agentName[10],agentId[5],p[5];
