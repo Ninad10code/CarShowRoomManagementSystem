@@ -218,14 +218,16 @@ carModelData * MergeShowRoom()
     count = 1;
     showRoomTemp = showRoomTemp->Stocknext;
     availCarNo = showRoomTemp->availCarsInStock;
-    carModelDataTemp = showRoomTemp->carModelDataHead;
+    carModelDataTemp->childnext = showRoomTemp->carModelDataHead;
+    carModelDataTemp = carModelDataTemp->childnext;
     while (count < availCarNo)
     {
         carModelDataTemp = carModelDataTemp->childnext;
         count++;
     }
     showRoomTemp = showRoomHead->Stocknext;
-    carModelDataTemp = showRoomTemp->carModelDataHead;
+    carModelDataTemp->childnext = showRoomTemp->carModelDataHead;
+    carModelDataTemp = carModelDataTemp->childnext;
     return mergedAvailCar;
 }
 
