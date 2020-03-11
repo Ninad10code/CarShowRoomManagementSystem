@@ -231,23 +231,147 @@ carModelData * MergeShowRoom()
     return mergedAvailCar;
 }
 
+void insert(purchasedCar **lptr, purchasedCar * node)
+{
+    purchasedCar *current; 
+    printf("\nEntered insert function\n");
+    char nodeSalesAgent[5], tempSalesAgent[5];
+    strcpy(nodeSalesAgent, node->salesAgent);
+    printf("%s ", nodeSalesAgent);
+    if (lptr!=NULL)
+    {
+        strcpy(tempSalesAgent, (*lptr)->salesAgent);
+        printf("%s ", tempSalesAgent);
+    }
+    else
+    {
+        strcpy(tempSalesAgent, "");
+    }
+    
+    /* Special case for the head end */
+    if (lptr == NULL || strcmp(tempSalesAgent, nodeSalesAgent) > 0) 
+    { 
+        printf("Entered second if");
+        node->Carnext = *lptr; 
+        *lptr = node; 
+        printf("%s", (*lptr)->salesAgent);
+    } 
+    else
+    { 
+        /* Locate the node before the point of insertion */
+        printf("Entered else");
+        current = *lptr; 
+        int flag = 0;
+        while (current->Carnext!=NULL && flag==0) 
+        {
+            strcpy(tempSalesAgent, current->Carnext->salesAgent);
+            printf("%s ", tempSalesAgent);
+            if(strcmp(tempSalesAgent, nodeSalesAgent) <= 0)
+            { 
+                current = current->Carnext;
+            }
+            else
+            {
+                flag = 1;   
+            }
+            current = current->Carnext;
+            
+        } 
+        node->Carnext = current->Carnext; 
+        current->Carnext = node; 
+    }
+}
+
 void bestSalesPersonSort()
 {
-    purchasedCar *purchasedCarDataTemp, *purchasedCarBucketArray[15];
+    purchasedCar *purchasedCarDataTemp, *purchasedCarDataNext;
     int purchaseCount, soldCarsCount;
     purchaseCount = 0;
     soldCarsCount = 60;
     char str[15];
     purchasedCarDataTemp = carHead;
+    purchasedCar * purchasedCarBucketArray[] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
     while (purchaseCount < soldCarsCount)
     {
+        printf("%s ", purchasedCarDataTemp->carName);
         strcpy(str, purchasedCarDataTemp->carName);
-        if(strcmp(str, "Swift"))
+        purchasedCarDataNext = purchasedCarDataTemp->Carnext;
+        purchasedCarDataTemp->Carnext = NULL;
+        if(strcmp(str, "Swift") == 0)
         {
-            insert(purchasedCarBucketArray[0], purchasedCarDataTemp);
+            printf("Entered if");
+            insert(&purchasedCarBucketArray[0], purchasedCarDataTemp);
         }
+        else if (strcmp(str, "Ciaz") == 0)
+        {
+            insert(&purchasedCarBucketArray[1], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Brezza") == 0)
+        {
+            insert(&purchasedCarBucketArray[2], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Cellero") == 0)
+        {
+            insert(&purchasedCarBucketArray[3], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Baleno") == 0)
+        {
+            insert(&purchasedCarBucketArray[4], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Alto") == 0)
+        {
+            insert(&purchasedCarBucketArray[5], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Alto800") == 0)
+        {
+            insert(&purchasedCarBucketArray[6], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Ertiga") == 0)
+        {
+            insert(&purchasedCarBucketArray[7], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "WagonR") == 0)
+        {
+            insert(&purchasedCarBucketArray[8], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Dzire") == 0)
+        {
+            insert(&purchasedCarBucketArray[9], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Mercedes-S-Class") == 0)
+        {
+            insert(&purchasedCarBucketArray[10], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Mercedes-AMG") == 0)
+        {
+            insert(&purchasedCarBucketArray[11], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Audi-A6") == 0)
+        {
+            insert(&purchasedCarBucketArray[12], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Audi-Q7") == 0)
+        {
+            insert(&purchasedCarBucketArray[13], purchasedCarDataTemp);
+        }
+        else if (strcmp(str, "Evoque") == 0)
+        {
+            insert(&purchasedCarBucketArray[14], purchasedCarDataTemp);
+        }
+        purchasedCarDataTemp = purchasedCarDataNext;
+        purchaseCount++;
     }
-    
+    int count;
+    purchasedCarDataTemp = purchasedCarBucketArray[0];
+    for(count =0; count<15; count++)
+    {
+        purchasedCarDataTemp = purchasedCarBucketArray[count];
+        while(purchasedCarDataTemp!=NULL){
+            printf("%s %s\n", purchasedCarDataTemp->carName, purchasedCarDataTemp->salesAgent);
+            purchasedCarDataTemp = purchasedCarDataTemp->Carnext;
+        }
+        purchasedCarDataTemp->Carnext = purchasedCarBucketArray[count + 1];
+    }
 }
 
 int main()
@@ -259,7 +383,7 @@ int main()
     printShowRoomDetails();
     
     int soldCarsCount=60;
-    count=0;
+    int count=0;
     FILE *fptr3;
     fptr3=fopen("purchasedCar.txt","r");
     while (count<soldCarsCount)
@@ -317,127 +441,131 @@ int main()
         count++;
     }
     fclose(fptr3);
-    FILE *fptr4;
-    fptr4=fopen("Carmodels.txt","r");
-    bestSeller=(popularCar *)malloc(sizeof(popularCar)*16);
-    count=0;
-    fptr4=fopen("Carmodels.txt","r");
-    while (count<15)
-    {
-        fscanf(fptr4,"%s",&str);
-        carTemp=carHead;
-        strcpy(bestSeller[count].carName,str);
-        printf("%s\n",bestSeller[count].carName);
-        bestSeller[count].count=0;
-        while (carTemp!=NULL)
-        {
-            if (strcmp(carTemp->carName,str)==0)
-            {
-                bestSeller[count].count++;
-            }
-            carTemp=carTemp->Carnext;
+
+    bestSalesPersonSort();
+
+    // FILE *fptr4;
+    // fptr4=fopen("Carmodels.txt","r");
+    // bestSeller=(popularCar *)malloc(sizeof(popularCar)*16);
+    // count=0;
+    // fptr4=fopen("Carmodels.txt","r");
+    // while (count<15)
+    // {
+    //     fscanf(fptr4,"%s",&str);
+    //     carTemp=carHead;
+    //     strcpy(bestSeller[count].carName,str);
+    //     printf("%s\n",bestSeller[count].carName);
+    //     bestSeller[count].count=0;
+    //     while (carTemp!=NULL)
+    //     {
+    //         if (strcmp(carTemp->carName,str)==0)
+    //         {
+    //             bestSeller[count].count++;
+    //         }
+    //         carTemp=carTemp->Carnext;
 
             
             
-        }
-        printf("%d\n",bestSeller[count].count);
-        if (bestSeller[count].count>maxBestSaleCount)
-        {
-            maxBestSaleCount=bestSeller[count].count ;
-        }
+    //     }
+    //     printf("%d\n",bestSeller[count].count);
+    //     if (bestSeller[count].count>maxBestSaleCount)
+    //     {
+    //         maxBestSaleCount=bestSeller[count].count ;
+    //     }
         
-        count++;
+    //     count++;
         
-    }
-    printf("Max best sale %d\n",maxBestSaleCount);
-    fclose(fptr4);
-    count=0;
-    printf("Best seller car/cars are\n");
-    while (count<16)
-    {
-        if (bestSeller[count].count==maxBestSaleCount)
-        {
-            printf("%s ",bestSeller[count].carName);
-        }
-        count++;
+    // }
+    // printf("Max best sale %d\n",maxBestSaleCount);
+    // fclose(fptr4);
+    // count=0;
+    // printf("Best seller car/cars are\n");
+    // while (count<16)
+    // {
+    //     if (bestSeller[count].count==maxBestSaleCount)
+    //     {
+    //         printf("%s ",bestSeller[count].carName);
+    //     }
+    //     count++;
         
-    }
-    printf("\n");
-    int found=0;
-    float total=0.0,balance=0.0;
-    printf("Enter the sales agent name\n");
-    scanf("%s",&agentName);
-    printf("Agent name is %s\n",agentName);
-    SPtemp=SPhead;
-    while (SPtemp!=NULL && found!=1)
-    {
-        if (strcmp(SPtemp->spName,agentName)==0)
-        {
-            found=1;
-            strcpy(agentId,SPtemp->spId);
-        }
-        else
-        {
-            SPtemp=SPtemp->next;
-        }
+    // }
+    // printf("\n");
+    // int found=0;
+    // float total=0.0,balance=0.0;
+    // printf("Enter the sales agent name\n");
+    // scanf("%s",&agentName);
+    // printf("Agent name is %s\n",agentName);
+    // SPtemp=SPhead;
+    // while (SPtemp!=NULL && found!=1)
+    // {
+    //     if (strcmp(SPtemp->spName,agentName)==0)
+    //     {
+    //         found=1;
+    //         strcpy(agentId,SPtemp->spId);
+    //     }
+    //     else
+    //     {
+    //         SPtemp=SPtemp->next;
+    //     }
         
-    }
-    carTemp=carHead;
-    while (carTemp!=NULL)
-    {
-        if (strcmp(carTemp->salesAgent,agentId)==0)
-        {
-            i=0;
-            while (carTemp->balancedAmount[i]!='l')
-            {
-                p[i]=carTemp->balancedAmount[i];
-                i++;
-            }
-            balance=atoi(p);
-            printf("Balance %f\n",balance);
-            total=total+balance;
-        }
-        carTemp=carTemp->Carnext;
+    // }
+    // carTemp=carHead;
+    // while (carTemp!=NULL)
+    // {
+    //     if (strcmp(carTemp->salesAgent,agentId)==0)
+    //     {
+    //         i=0;
+    //         while (carTemp->balancedAmount[i]!='l')
+    //         {
+    //             p[i]=carTemp->balancedAmount[i];
+    //             i++;
+    //         }
+    //         balance=atoi(p);
+    //         printf("Balance %f\n",balance);
+    //         total=total+balance;
+    //     }
+    //     carTemp=carTemp->Carnext;
         
-    }
-    printf("Total %f\n",total);
+    // }
+    // printf("Total %f\n",total);
     
-    //start of predict sales for a given car
-    float x,y;
-    found=0,total=0;
-    printf("Enter the car name to predict sales\n");
-    scanf("%s",&str);
-    for ( count = 0; count < 15 && found!=1; count++)
-    {
-        if (strcmp(str,bestSeller[count].carName)==0)
-        {
-            found=1;
-        }
+    // //start of predict sales for a given car
+    // float x,y;
+    // found=0,total=0;
+    // printf("Enter the car name to predict sales\n");
+    // scanf("%s",&str);
+    // for ( count = 0; count < 15 && found!=1; count++)
+    // {
+    //     if (strcmp(str,bestSeller[count].carName)==0)
+    //     {
+    //         found=1;
+    //     }
         
-    }
-    count--;
-    printf("%d %s\n",count,bestSeller[count].carName);
-    carTemp=carHead;
-    while (carTemp!=NULL)
-    {
-        SPtemp=SPhead;
-        if (strcmp(carTemp->carName,str)==0)
-        {
-            while (SPtemp!=NULL)
-            {
-                if (strcmp(carTemp->salesAgent,SPtemp->spId)==0)
-                {
-                    x=atof(SPtemp->salesTarget);
-                    y=atof(SPtemp->salesAchieved);
-                    total=total+(bestSeller[count].count*(y/x));
-                    printf("Total %f\n",total);
-                }
-                SPtemp=SPtemp->next;
+    // }
+    // count--;
+    // printf("%d %s\n",count,bestSeller[count].carName);
+    // carTemp=carHead;
+    // while (carTemp!=NULL)
+    // {
+    //     SPtemp=SPhead;
+    //     if (strcmp(carTemp->carName,str)==0)
+    //     {
+    //         while (SPtemp!=NULL)
+    //         {
+    //             if (strcmp(carTemp->salesAgent,SPtemp->spId)==0)
+    //             {
+    //                 x=atof(SPtemp->salesTarget);
+    //                 y=atof(SPtemp->salesAchieved);
+    //                 total=total+(bestSeller[count].count*(y/x));
+    //                 printf("Total %f\n",total);
+    //             }
+    //             SPtemp=SPtemp->next;
                 
-            }
+    //         }
             
-        }
-        carTemp=carTemp->Carnext;
+    //     }
+    //     carTemp=carTemp->Carnext;
         
-    }
+    // }
+    return 0;
 }
