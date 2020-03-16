@@ -3,7 +3,7 @@
 #include<string.h>
 typedef struct stockchild
 {
-    char carName[15];
+    char carName[18];
     char carColor[10] ;
     char fuelType[10];
     char carType[10] ;
@@ -26,11 +26,13 @@ typedef struct stocknode
 // structure for car details of purchased cars
 typedef struct Carnode
 {
+
     char carName[18],carColor[10],fuelType[10],carType[10],insuranceEval[10],salesAgent[10];
     char customerName[11],customerMob[11],carRegNo[4];
     char ActualPrice[10],EMI[10],balancedAmount[10],servicingCount[2];
     int traverseStatus;
     struct Carnode *Carnext;    
+
 } purchasedCar;
 
 //structure for Sales Person
@@ -704,7 +706,10 @@ void bestSalesPerson()
 }
 int main()
 {
+
     char str[18],agentName[10],agentId[5],p[5];
+
+
     // str[10]=(char *)malloc(sizeof(char)*105);
     int count=0;
     FILE *fptr;
@@ -922,6 +927,7 @@ int main()
         
         count++;
     }
+
     fclose(fptr3);
     
 
@@ -1004,8 +1010,7 @@ int main()
     
     
 
-    
-    
+
     
     
 }
